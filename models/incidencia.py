@@ -2,7 +2,7 @@ from odoo import fields, models
 
 class Incidencia(models.Model):
     _name = "aplicacion_incidencias.incidencia"
-    # _description = ''
+    _description = 'Tabla de Alex'
 
     # [ CAMPOS SIMPLES ]
     titulo = fields.Text(String="Titulo de la incidencia")

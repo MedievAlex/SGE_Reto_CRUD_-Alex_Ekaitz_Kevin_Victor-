@@ -2,7 +2,7 @@ from odoo import fields, models
 
 class Comentario(models.Model):
     _name = "aplicacion_incidencias.comentario"
-    # _description = ''
+    _description = 'Tabla de Alex'
 
     # [ CAMPOS SIMPLES ]
     contenido = fields.Text(String="Comentario")
