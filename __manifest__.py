@@ -9,7 +9,7 @@ Aplicación de incidencias del RETO 1 - CRUD de grupo compuesto por Alex, Ekaitz
     """,
     'depends': ['base'],
     'data': [
-
+        'security/incidencias_security.xml'
     ],
     'license': 'LGPL-3',
 }
