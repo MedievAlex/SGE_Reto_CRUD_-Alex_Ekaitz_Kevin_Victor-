@@ -1,10 +1,97 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+    <!-- GRUPOS DE USUARIOS -->
     <record id="grupo_administrador" model="res.groups">
         <field name="name">Administrador</field>
     </record>
 
     <record id="grupo_participante" model="res.groups">
         <field name="name">Participante</field>
+    </record>
+
+    <!-- ESTRUCTURA DE ACCESOS -->
+
+    <!-- Encuesta -->
+    <record id="acceso_administrador_encuesta" model="ir.model.access">
+        <field name="name">Acceso Administrador Encuesta</field>
+        <field name="model_id" ref="model_aplicacion_incidencias_encuesta"/>
+        <field name="group_id" ref="grupo_administrador"/>
+    </record>
+    <record id="acceso_participante_encuesta" model="ir.model.access">
+        <field name="name">Acceso Participante Encuesta</field>
+        <field name="model_id" ref="model_aplicacion_incidencias_encuesta"/>
+        <field name="group_id" ref="grupo_participante"/>
+    </record>
+
+    <!-- Incidencia -->
+    <record id="acceso_administrador_incidencia" model="ir.model.access">
+        <field name="name">Acceso Administrador Incidencia</field>
+        <field name="model_id" ref="model_aplicacion_incidencias_incidencia"/>
+        <field name="group_id" ref="grupo_administrador"/>
+    </record>
+    <record id="acceso_participante_incidencia" model="ir.model.access">
+        <field name="name">Acceso Participante Incidencia</field>
+        <field name="model_id" ref="model_aplicacion_incidencias_incidencia"/>
+        <field name="group_id" ref="grupo_participante"/>
+    </record>
+
+    <!-- Comentario -->
+    <record id="acceso_administrador_comentario" model="ir.model.access">
+        <field name="name">Acceso Administrador Comentario</field>
+        <field name="model_id" ref="model_aplicacion_incidencias_comentario"/>
+        <field name="group_id" ref="grupo_administrador"/>
+    </record>
+    <record id="acceso_participante_comentario" model="ir.model.access">
+        <field name="name">Acceso Participante Comentario</field>
+        <field name="model_id" ref="model_aplicacion_incidencias_comentario"/>
+        <field name="group_id" ref="grupo_participante"/>
+    </record>
+
+    <!-- Adjunto -->
+    <record id="acceso_administrador_adjunto" model="ir.model.access">
+        <field name="name">Acceso Administrador Adjunto</field>
+        <field name="model_id" ref="model_aplicacion_incidencias_adjunto"/>
+        <field name="group_id" ref="grupo_administrador"/>
+    </record>
+    <record id="acceso_participante_adjunto" model="ir.model.access">
+        <field name="name">Acceso Participante Adjunto</field>
+        <field name="model_id" ref="model_aplicacion_incidencias_adjunto"/>
+        <field name="group_id" ref="grupo_participante"/>
+    </record>
+
+    <!-- Departamento -->
+    <record id="acceso_administrador_departamento" model="ir.model.access">
+        <field name="name">Acceso Administrador Departamento</field>
+        <field name="model_id" ref="model_aplicacion_incidencias_departamento"/>
+        <field name="group_id" ref="grupo_administrador"/>
+    </record>
+    <record id="acceso_participante_departamento" model="ir.model.access">
+        <field name="name">Acceso Participante Departamento</field>
+        <field name="model_id" ref="model_aplicacion_incidencias_departamento"/>
+        <field name="group_id" ref="grupo_participante"/>
+    </record>
+
+    <!-- Empleado -->
+    <record id="acceso_administrador_empleado" model="ir.model.access">
+        <field name="name">Acceso Administrador Empleado</field>
+        <field name="model_id" ref="model_aplicacion_incidencias_empleado"/>
+        <field name="group_id" ref="grupo_administrador"/>
+    </record>
+    <record id="acceso_participante_empleado" model="ir.model.access">
+        <field name="name">Acceso Participante Empleado</field>
+        <field name="model_id" ref="model_aplicacion_incidencias_empleado"/>
+        <field name="group_id" ref="grupo_participante"/>
+    </record>
+
+    <!-- Estadísticas -->
+    <record id="acceso_administrador_estadisticas" model="ir.model.access">
+        <field name="name">Acceso Administrador Estadísticas</field>
+        <field name="model_id" ref="model_aplicacion_incidencias_estadisticas"/>
+        <field name="group_id" ref="grupo_administrador"/>
+    </record>
+    <record id="acceso_participante_estadisticas" model="ir.model.access">
+        <field name="name">Acceso Participante Estadísticas</field>
+        <field name="model_id" ref="model_aplicacion_incidencias_estadisticas"/>
+        <field name="group_id" ref="grupo_participante"/>
     </record>
 </odoo>
