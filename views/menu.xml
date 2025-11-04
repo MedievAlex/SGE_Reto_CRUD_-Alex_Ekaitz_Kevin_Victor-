@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record>
+
+    </record>
+
+    <menuItem id="menu_incidencia_root" name="Aplicacion_Incidencia" />
+
+    <menuItem id="menu_encuestas" name="Encuesta" parent="menu_incidencia_root" action="action_encuesta" />
+
+    <menuItem id="menu_estadisticas" name="Estadisticas" parent="menu_incidencia_root" action="action_estadisticas" />
+
+    <menuItem id="menu_incidencia" name="Incidencia" parent="menu_incidencia_root" action="action_incidencia" />
+
+    <menuItem id="menu_comentario" name="Comentario" parent="menu_incidencia_root" action="action_comentario" />
+
+    <menuItem id="menu_adjunto" name="Adjunto" parent="menu_incidencia_root" action="action_adjunto" />
+</odoo>
