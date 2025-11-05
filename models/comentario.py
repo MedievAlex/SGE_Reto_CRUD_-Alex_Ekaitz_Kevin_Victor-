@@ -5,8 +5,8 @@ class Comentario(models.Model):
     _description = 'Tabla de Alex'
 
     # [ CAMPOS SIMPLES ]
-    contenido = fields.Text(String="Comentario")
-    fecha_creacion = fields.Date(String="Fecha de creacion")
+    contenido = fields.Text(string="Comentario")
+    fecha_creacion = fields.Date(string="Fecha de creacion")
 
     # [ CAMPOS RELACIONALES ]
     # [primary key]
