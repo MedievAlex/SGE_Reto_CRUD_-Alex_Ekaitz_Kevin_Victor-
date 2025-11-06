@@ -2,7 +2,7 @@ from odoo import fields, models
 
 class Incidencia(models.Model):
     _name = "aplicacion_incidencias.incidencia"
-    _description = 'Tabla de Alex'
+    _description = "Tabla de Alex"
 
     # [ CAMPOS SIMPLES ]
     titulo = fields.Text(string="Titulo de la incidencia")
@@ -11,8 +11,9 @@ class Incidencia(models.Model):
     estado_actual = fields.Boolean(string="Estado (Completa/Incompleta)")
 
     # [ CAMPOS RELACIONALES ]
-    # [primary key]
-    #id_incidencia = fields.Many2one(comodel_name='aplicacion_incidencias.incidencia', string="Incidencia", required=True, ondelete="cascade")
+    # [foreign key]
+    estadisticas_ids = fields.Many2many(comodel_name="aplicacion_incidencias.estadisticas", relation="estadisticas_incidencia",
+                                        column1="incidencia_id", column2="estadisticas_id", string="Estadísticas Relacionadas")
     # [foreign key]
     #id_departamento = fields.Many2one(comodel_name='departamento', string="Incidencia", required=True, ondelete="cascade")
     # [foreign key]

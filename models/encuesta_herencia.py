@@ -7,4 +7,4 @@ class EncuestaHerencia(models.Model):
 
     # [ CAMPOS SIMPLES ]
     tiempo_realizacion = fields.Integer(string="Tiempo de Realización (minutos)")
-    idioma = fields.Selection([('es', 'Español'), ('en', 'Inglés'), ('eu', 'Euskera')], string="Idioma", default='es')
+    idioma = fields.Selection([("es", "Español"), ("en", "Inglés"), ("eu", "Euskera")], string="Idioma", default="es")
