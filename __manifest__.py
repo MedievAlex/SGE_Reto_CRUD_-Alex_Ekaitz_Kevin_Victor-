@@ -2,14 +2,16 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 {
-    'name': 'Aplicacion de Incidencias (Alex, Ekaitz, Kevin, Victor)',
+    'name': 'aplicacion_incidencias',
     'version': '1.0',
     'description': """
 Aplicación de incidencias del RETO 1 - CRUD de grupo compuesto por Alex, Ekaitz, Kevin y Victor.
     """,
     'depends': ['base'],
     'data': [
-
+        "security/aplicacion_incidencias_security.xml",
+        "security/ir.model.access.csv",
+        "views/menu.xml"
     ],
     'license': 'LGPL-3',
 }
