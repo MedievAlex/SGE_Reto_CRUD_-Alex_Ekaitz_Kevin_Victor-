@@ -15,6 +15,6 @@ class Incidencia(models.Model):
     estadisticas_ids = fields.Many2many(comodel_name="aplicacion_incidencias.estadisticas", relation="estadisticas_incidencia",
                                         column1="incidencia_id", column2="estadisticas_id", string="Estadísticas Relacionadas")
     # [foreign key]
-    #id_departamento = fields.Many2one(comodel_name='departamento', string="Incidencia", required=True, ondelete="cascade")
+    # id_empleado = fields.Many2one(comodel_name='hr.hr_employee', string="Incidencia", required=True, ondelete="cascade")
     # [foreign key]
-    #id_empleado_origen = fields.Many2one(comodel_name='empleado_origen', string="Incidencia", required=True, ondelete="cascade")
+    # id_departamento = fields.Many2one(comodel_name='hr.hr_department', string="Incidencia", required=True, ondelete="cascade")
