@@ -70,29 +70,4 @@
         <field name="model_id" ref="model_aplicacion_incidencias_estadisticas"/>
         <field name="group_id" ref="grupo_participante"/>
     </record>
-
-    <!-- Error a partir de aqui -->
-    <!-- Departamento -->
-    <!-- <record id="acceso_administrador_departamento" model="ir.model.access">
-        <field name="name">Acceso Administrador Departamento</field>
-        <field name="model_id" ref="model_aplicacion_incidencias_departamento"/>
-        <field name="group_id" ref="grupo_administrador"/>
-    </record>
-    <record id="acceso_participante_departamento" model="ir.model.access">
-        <field name="name">Acceso Participante Departamento</field>
-        <field name="model_id" ref="model_aplicacion_incidencias_departamento"/>
-        <field name="group_id" ref="grupo_participante"/>
-    </record>-->
-
-    <!-- Empleado -->
-    <!--<record id="acceso_administrador_empleado" model="ir.model.access">
-        <field name="name">Acceso Administrador Empleado</field>
-        <field name="model_id" ref="model_aplicacion_incidencias_empleado"/>
-        <field name="group_id" ref="grupo_administrador"/>
-    </record>
-    <record id="acceso_participante_empleado" model="ir.model.access">
-        <field name="name">Acceso Participante Empleado</field>
-        <field name="model_id" ref="model_aplicacion_incidencias_empleado"/>
-        <field name="group_id" ref="grupo_participante"/>
-    </record>-->
 </odoo>
