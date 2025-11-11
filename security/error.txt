@@ -1,9 +1,0 @@
-# Mirar esta parte que da error csv
-
-# Departamento
-#acceso_administrador_departamento,Acceso Administrador Departamento,model_aplicacion_incidencias_departamento,grupo_administrador,1,1,1,1
-#acceso_participante_departamento,Acceso Participante Departamento,model_aplicacion_incidencias_departamento,grupo_participante,1,0,0,0
-
-# Empleado
-#acceso_administrador_empleado,Acceso Administrador Empleado,model_aplicacion_incidencias_empleado,grupo_administrador,1,1,1,1
-#acceso_participante_empleado,Acceso Participante Empleado,model_aplicacion_incidencias_empleado,grupo_participante,1,0,0,0
