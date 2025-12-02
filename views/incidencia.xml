@@ -34,12 +34,19 @@
     </record>
 
     <record id="view_incidencias_kanban" model="ir.ui.view">
-       <field name="name">incidencia.kanban</field>
-       <field name="model">aplicacion_incidencias.incidencia</field>
+        <field name="name">incidencia.kanban</field>
+        <field name="model">aplicacion_incidencias.incidencia</field>
         <field name="arch" type="xml">
             <kanban string="Incidencias Kanban">
                 <templates>
-
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <strong><field name="titulo"/></strong>
+                            <div><field name="descripcion"/></div>
+                            <div><field name="fecha_creacion"/></div>
+                            <div><field name="estado_actual"/></div>
+                        </div>
+                    </t>
                 </templates>
             </kanban>
         </field>
