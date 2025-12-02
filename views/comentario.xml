@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <record id="comentario_tree_view" model="ir.ui.view">
+    <record id="view_comentario_tree" model="ir.ui.view">
 
     </record>
 
-    <record id="comentario_form_view" model="ir.ui.view">
+    <record id="view_comentario_form" model="ir.ui.view">
 
     </record>
 
-    <record id="comentario_kanban_view" model="ir.ui.view">
+    <record id="view_comentario_kanban" model="ir.ui.view">
 
     </record>
 </odoo>

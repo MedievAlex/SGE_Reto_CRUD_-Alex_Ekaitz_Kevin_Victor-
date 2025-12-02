@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <record id="incidencias_tree_view" model="ir.ui.view">
+    <record id="view_incidencias_tree" model="ir.ui.view">
         <field name="name">incidencia.tree</field>
         <field name="model">aplicacion_incidencias.incidencia</field>
         <field name="arch" type="xml">
@@ -13,13 +13,13 @@
         </field>
     </record>
 
-    <record id="incidencias_form_view" model="ir.ui.view">
+    <record id="view_incidencias_form" model="ir.ui.view">
         <field name="name">incidencia.form</field>
         <field name="model">aplicacion_incidencias.incidencia</field>
         <field name="arch" type="xml">
             <form string="Incidencias Form">
                 <header>
-                    <button name="changeState" type="object" string="Cambiar Estado" class="btn btn-primary"/>
+
                 </header>
                 <sheet>
                     <group>
@@ -33,7 +33,7 @@
         </field>
     </record>
 
-    <record id="incidencias_kanban_view" model="ir.ui.view">
+    <record id="view_incidencias_kanban" model="ir.ui.view">
        <field name="name">incidencia.kanban</field>
        <field name="model">aplicacion_incidencias.incidencia</field>
         <field name="arch" type="xml">
