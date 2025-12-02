@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="incidencias_tree_view" model="ir.ui.view">
+        <field name="name">incidencia.tree</field>
+        <field name="model">aplicacion_incidencias.incidencia</field>
+        <field name="arch">
+            <tree>
+                <field name="titulo"/>
+                <field name="descripcion"/>
+                <field name="fecha_creacion"/>
+                <field name="estado_actual"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="incidencias_form_view" model="ir.ui.view">
+        <field name="name">incidencia.form</field>
+        <field name="model">aplicacion_incidencias.incidencia</field>
+        <field name="arch">
+            <form>
+                <header>
+                    <button name="changeState" type="object" string="Cambiar Estado" class="btn btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="titulo"/>
+                        <field name="descripcion"/>
+                        <field name="fecha_creacion"/>
+                        <field name="estado_actual"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="incidencias_kanban_view" model="ir.ui.view">
+       <field name="name">incidencia.kanban</field>
+       <field name="model">aplicacion_incidencias.incidencia</field>
+        <field name="arch">
+            <kanban>
+                <templates>
+
+                </templates>
+            </kanban>
+        </field>
+    </record>
+</odoo>
