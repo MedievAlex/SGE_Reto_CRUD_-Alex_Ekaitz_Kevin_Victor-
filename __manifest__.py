@@ -5,7 +5,7 @@
     'name': 'aplicacion_incidencias',
     'version': '1.0',
     'description': """
-Aplicación de incidencias del RETO 1 - CRUD de grupo compuesto por Alex, Ekaitz, Kevin y Victor.
+Aplicación de incidencias del RETO 2 - CRUD Avanzado de grupo compuesto por Alex, Ekaitz, Kevin y Victor.
     """,
     'depends': ['base'],
     'data': [

@@ -3,8 +3,8 @@
     <record id="incidencias_tree_view" model="ir.ui.view">
         <field name="name">incidencia.tree</field>
         <field name="model">aplicacion_incidencias.incidencia</field>
-        <field name="arch">
-            <tree>
+        <field name="arch" type="xml">
+            <tree string="Incidencias Tree">
                 <field name="titulo"/>
                 <field name="descripcion"/>
                 <field name="fecha_creacion"/>
@@ -16,8 +16,8 @@
     <record id="incidencias_form_view" model="ir.ui.view">
         <field name="name">incidencia.form</field>
         <field name="model">aplicacion_incidencias.incidencia</field>
-        <field name="arch">
-            <form>
+        <field name="arch" type="xml">
+            <form string="Incidencias Form">
                 <header>
                     <button name="changeState" type="object" string="Cambiar Estado" class="btn btn-primary"/>
                 </header>
@@ -36,8 +36,8 @@
     <record id="incidencias_kanban_view" model="ir.ui.view">
        <field name="name">incidencia.kanban</field>
        <field name="model">aplicacion_incidencias.incidencia</field>
-        <field name="arch">
-            <kanban>
+        <field name="arch" type="xml">
+            <kanban string="Incidencias Kanban">
                 <templates>
 
                 </templates>
