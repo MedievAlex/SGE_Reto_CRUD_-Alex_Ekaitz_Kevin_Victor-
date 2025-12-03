@@ -1,14 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <record id="view_comentario_tree" model="ir.ui.view">
-
+        <field name="name">comentario.tree</field>
+        <field name="model">aplicacion_incidencias.comentario</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="contenido"/>
+                <field name="fecha_creacion"/>
+            </tree>
+        </field>
     </record>
 
     <record id="view_comentario_form" model="ir.ui.view">
+        <field name="name">comentario.tree</field>
+        <field name="model">aplicacion_incidencias.comentario</field>
+        <field name="arch" type="xml">
+                <form>
+                <header>
 
+                </header>
+                <sheet>
+                    <group>
+                        <field name="contenido"/>
+                        <field name="fecha_creacion"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
     </record>
 
     <record id="view_comentario_kanban" model="ir.ui.view">
-
+        <field name="name">comentario.tree</field>
+        <field name="model">aplicacion_incidencias.comentario</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div><field name="contenido"/></div>
+                            <div><field name="fecha_creacion"/></div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
     </record>
 </odoo>

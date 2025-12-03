@@ -4,7 +4,7 @@
         <field name="name">incidencia.tree</field>
         <field name="model">aplicacion_incidencias.incidencia</field>
         <field name="arch" type="xml">
-            <tree string="Incidencias Tree">
+            <tree>
                 <field name="titulo"/>
                 <field name="descripcion"/>
                 <field name="fecha_creacion"/>
@@ -17,7 +17,7 @@
         <field name="name">incidencia.form</field>
         <field name="model">aplicacion_incidencias.incidencia</field>
         <field name="arch" type="xml">
-            <form string="Incidencias Form">
+            <form>
                 <header>
 
                 </header>
@@ -37,7 +37,7 @@
         <field name="name">incidencia.kanban</field>
         <field name="model">aplicacion_incidencias.incidencia</field>
         <field name="arch" type="xml">
-            <kanban string="Incidencias Kanban">
+            <kanban>
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click">
