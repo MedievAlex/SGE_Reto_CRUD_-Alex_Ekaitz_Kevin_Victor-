@@ -13,7 +13,7 @@
                            <field name="contenido"/>
                        </group>
                         <group col="2">
-                           <field name="x_id_incidencia"/>
+                           <field name="id_incidencia"/>
                        </group>
                         <group col="2">
                            <field name="fecha_creacion"/>
@@ -53,4 +53,6 @@
             </kanban>
         </field>
     </record>
+
+    <!-- SEARCH -->
 </odoo>

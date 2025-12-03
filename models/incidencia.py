@@ -5,10 +5,10 @@ class Incidencia(models.Model):
     _description = "Tabla de Alex"
 
     # [ CAMPOS SIMPLES ]
-    titulo = fields.Text(string="Titulo de la incidencia")
-    descripcion = fields.Text(string="Descripcion de la incidencia")
-    fecha_creacion = fields.Date(string="Fecha de creacion", readonly=True, default=fields.Datetime.now,)
-    estado_actual = fields.Boolean(string="Estado (Completa/Incompleta)")
+    titulo = fields.Text(string="Titulo de la incidencia:")
+    descripcion = fields.Text(string="Descripcion de la incidencia:")
+    fecha_creacion = fields.Date(string="Fecha de creacion:", default=fields.Datetime.now)
+    estado_actual = fields.Boolean(string="Completa/Incompleta:", default=False)
 
     # [ CAMPOS RELACIONALES ]
     # [foreign key]
