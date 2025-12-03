@@ -7,7 +7,7 @@ class Encuesta(models.Model):
     # [ CAMPOS SIMPLES ]
     puntuacion = fields.Integer(string="Puntuación")
     comentario = fields.Text(string="Comentario")
-    fecha_respuesta = fields.Date(string="Fecha")
+    fecha_respuesta = fields.Date(string="Fecha", default=fields.Datetime.now)
 
     # [ CAMPOS RELACIONALES ]
     # [foreign key]

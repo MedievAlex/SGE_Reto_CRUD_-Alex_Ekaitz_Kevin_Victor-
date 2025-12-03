@@ -6,9 +6,10 @@
             <field name="model">aplicacion_incidencias.encuesta</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="puntuacion"/>
-                    <field name="comentario"/>
-                    <field name="fecha_respuesta"/>
+                    <field name="puntuacion" width="8%"/>
+                    <field name="incidencia_id" width="20%"/>
+                    <field name="comentario" width="67%"/>
+                    <field name="fecha_respuesta" width="5%"/>
                 </tree>
             </field>
         </record>
@@ -42,6 +43,7 @@
                                     <strong><field name="puntuacion"/></strong>
                                     <div><field name="comentario"/></div>
                                     <div><field name="fecha_respuesta"/></div>
+                                    <div><field name="incidencia_id"/></div>
                                 </div>
                             </div>
                         </t>
