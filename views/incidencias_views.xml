@@ -53,11 +53,19 @@
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click">
                             <div name="informacion_incidencia" class="oe_kanban_details" style="word-wrap: break-word">
-                                <strong><field name="titulo"/></strong>
-                                <field name="descripcion"/>
+                                <div>
+                                    <strong><field name="titulo"/></strong>
+                                </div>
+                                <div>
+                                    <field name="descripcion"/>
+                                </div>
                                 <div style="display: flex; justify-content: space-between">
-                                   <span width="50%">Estado: <field name="estado_actual"/></span>
-                                   <span width="50%">Fecha: <field name="fecha_creacion"/></span>
+                                    <span width="50%">
+                                        Fecha: <field name="fecha_creacion"/>
+                                    </span>
+                                    <span width="50%">
+                                        Estado: <field name="estado_actual"/>
+                                    </span>
                                 </div>
                             </div>
                         </div>
