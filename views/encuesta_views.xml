@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="encuesta_view_tree" model="ir.ui.view">
+            <field name="name">encuesta.tree</field>
+            <field name="model">aplicacion_incidencias.encuesta</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="puntuacion"/>
+                    <field name="comentario"/>
+                    <field name="fecha_respuesta"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="encuesta_view_form" model="ir.ui.view">
+            <field name="name">encuesta.form</field>
+            <field name="model">aplicacion_incidencias.encuesta</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="puntuacion"/>
+                            <field name="comentario"/>
+                            <field name="fecha_respuesta" widget="date"/>
+                            <field name="incidencia_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="encuesta_view_kanban" model="ir.ui.view">
+            <field name="name">encuesta.kanban</field>
+            <field name="model">aplicacion_incidencias.encuesta</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="o_kanban_record_body">
+                                    <strong><field name="puntuacion"/></strong>
+                                    <div><field name="comentario"/></div>
+                                    <div><field name="fecha_respuesta"/></div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+    </data>
+</odoo>

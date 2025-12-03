@@ -7,11 +7,11 @@ class Encuesta(models.Model):
     # [ CAMPOS SIMPLES ]
     puntuacion = fields.Integer(string="Puntuación")
     comentario = fields.Text(string="Comentario")
-    fecha_respuesta = fields.Date(string="Fecha de respuesta")
+    fecha_respuesta = fields.Date(string="Fecha")
 
     # [ CAMPOS RELACIONALES ]
     # [foreign key]
-    incidencia_id = fields.Many2one(comodel_name="aplicacion_incidencias.incidencia", string="Incidencia", required=True, ondelete="cascade")
+    x_incidencia_id = fields.Many2one(comodel_name="aplicacion_incidencias.incidencia", string="Incidencia", required=True, ondelete="cascade")
 
     # [foreign key]
     #empleado_id = fields.Many2one(
