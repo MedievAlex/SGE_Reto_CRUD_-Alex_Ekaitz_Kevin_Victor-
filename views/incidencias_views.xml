@@ -13,17 +13,17 @@
                            <field name="titulo" placeholder="Ej.: Problema en la aplicación" required="1"/>
                        </h1>
                     </div>
-                    <group name="informacion_incidencia">
-                        <field name="fecha_creacion"/>
-                        <field name="estado_actual"/>
+                    <group name="informacion_incidencia" colspan="4">
+                       <group col="2">
+                           <field name="fecha_creacion"/>
+                       </group>
+                       <group col="2">
+                           <field name="estado_actual"/>
+                       </group>
+                       <group colspan="4">
+                           <field name="descripcion"/>
+                       </group>
                     </group>
-                    <notebook>
-                           <page>
-                               <group colspan="4">
-                                   <field name="descripcion"/>
-                               </group>
-                           </page>
-                       </notebook>
                 </sheet>
             </form>
         </field>

@@ -8,16 +8,17 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
-                    <group name="informacion_comentario">
-                        <field name="fecha_creacion"/>
+                    <group name="informacion_comentario" colspan="4">
+                       <group colspan="4">
+                           <field name="contenido"/>
+                       </group>
+                        <group col="2">
+                           <field name="x_id_incidencia"/>
+                       </group>
+                        <group col="2">
+                           <field name="fecha_creacion"/>
+                       </group>
                     </group>
-                    <notebook>
-                       <page>
-                           <group colspan="4">
-                               <field name="contenido"/>
-                           </group>
-                       </page>
-                    </notebook>
                 </sheet>
             </form>
         </field>
