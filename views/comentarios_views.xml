@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
 
+     <!-- FORM -->
+    <record id="view_comentario_form" model="ir.ui.view">
+        <field name="name">comentario.tree</field>
+        <field name="model">aplicacion_incidencias.comentario</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group name="informacion_comentario">
+                        <field name="fecha_creacion"/>
+                    </group>
+                    <notebook>
+                       <page>
+                           <group colspan="4">
+                               <field name="contenido"/>
+                           </group>
+                       </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
     <!-- TREE -->
     <record id="view_comentario_tree" model="ir.ui.view">
         <field name="name">comentario.tree</field>
@@ -10,25 +32,6 @@
                 <field name="contenido"/>
                 <field name="fecha_creacion"/>
             </tree>
-        </field>
-    </record>
-
-    <!-- FORM -->
-    <record id="view_comentario_form" model="ir.ui.view">
-        <field name="name">comentario.tree</field>
-        <field name="model">aplicacion_incidencias.comentario</field>
-        <field name="arch" type="xml">
-                <form>
-                <header>
-
-                </header>
-                <sheet>
-                    <group>
-                        <field name="contenido"/>
-                        <field name="fecha_creacion"/>
-                    </group>
-                </sheet>
-            </form>
         </field>
     </record>
 
