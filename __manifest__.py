@@ -12,8 +12,8 @@ Aplicación de incidencias del RETO 2 - CRUD Avanzado de grupo compuesto por Ale
         "security/aplicacion_incidencias_security.xml",
         "security/ir.model.access.csv",
         "views/menu.xml"
-        "views/incidencias.xml"
-        "views/comentarios.xml"
+        "views/incidencias_views.xml"
+        "views/comentarios_views.xml"
     ],
     'license': 'LGPL-3',
 }
