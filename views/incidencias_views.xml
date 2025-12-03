@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+
+    <!-- TREE -->
     <record id="view_incidencias_tree" model="ir.ui.view">
         <field name="name">incidencia.tree</field>
         <field name="model">aplicacion_incidencias.incidencia</field>
@@ -13,6 +15,7 @@
         </field>
     </record>
 
+    <!-- FORM -->
     <record id="view_incidencias_form" model="ir.ui.view">
         <field name="name">incidencia.form</field>
         <field name="model">aplicacion_incidencias.incidencia</field>
@@ -33,6 +36,7 @@
         </field>
     </record>
 
+    <!-- KANBAN -->
     <record id="view_incidencias_kanban" model="ir.ui.view">
         <field name="name">incidencia.kanban</field>
         <field name="model">aplicacion_incidencias.incidencia</field>
