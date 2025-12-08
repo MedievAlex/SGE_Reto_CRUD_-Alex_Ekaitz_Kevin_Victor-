@@ -5,11 +5,14 @@
             <field name="name">encuesta.tree</field>
             <field name="model">aplicacion_incidencias.encuesta</field>
             <field name="arch" type="xml">
-                <tree>
-                    <field name="puntuacion" width="8%"/>
-                    <field name="incidencia_id" width="20%"/>
-                    <field name="comentario" width="67%"/>
-                    <field name="fecha_respuesta" width="5%"/>
+                <tree string="Encuestas de Satisfacción"
+                      decoration-danger="puntuacion &lt; '2'"
+                      decoration-success="puntuacion &gt;= '4'"
+                      decoration-warning="puntuacion &gt;= '2' and puntuacion &lt; '4'">
+                    <field name="puntuacion" widget="priority" readonly="True" width="15%"/>
+                    <field name="comentario" width="auto"/>
+                    <field name="x_incidencia_id" width="25%"/>
+                    <field name="fecha_respuesta" widget="date" width="10%"/>
                 </tree>
             </field>
         </record>
@@ -18,13 +21,25 @@
             <field name="name">encuesta.form</field>
             <field name="model">aplicacion_incidencias.encuesta</field>
             <field name="arch" type="xml">
-                <form>
+                <form string="Encuesta">
                     <sheet>
                         <group>
-                            <field name="puntuacion"/>
-                            <field name="comentario"/>
-                            <field name="fecha_respuesta" widget="date"/>
-                            <field name="incidencia_id"/>
+                            <group string="Calificación">
+                                <field name="puntuacion" widget="priority"/>
+                            </group>
+
+                            <group string="Información General">
+                                <field name="fecha_respuesta" widget="date"/>
+                                <field name="x_incidencia_id"/>
+                            </group>
+                        </group>
+
+                        <separator string="Comentarios"/>
+
+                        <group>
+                            <field name="comentario" nolabel="1"
+                                   placeholder="Escribe aquí..."
+                                   style="height: 100px; width: 400px;"/>
                         </group>
                     </sheet>
                 </form>
@@ -40,10 +55,10 @@
                         <t t-name="kanban-box">
                             <div class="oe_kanban_global_click">
                                 <div class="o_kanban_record_body">
-                                    <strong><field name="puntuacion"/></strong>
+                                    <field name="puntuacion" widget="priority" readonly="True"/>
                                     <div><field name="comentario"/></div>
-                                    <div><field name="fecha_respuesta"/></div>
-                                    <div><field name="incidencia_id"/></div>
+                                    <div><strong><field name="x_incidencia_id"/></strong></div>
+                                    <div><small><field name="fecha_respuesta"/></small></div>
                                 </div>
                             </div>
                         </t>
