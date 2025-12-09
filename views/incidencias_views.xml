@@ -66,13 +66,12 @@
                                     <span width="50%">
                                         <field name="estado_actual" attrs="{'invisible': True}"/>
 
-                                        <span attrs="{'invisible': [('estado_actual', '=', False)]}" style="color:Green;">
-                                            <i class="fa fa-check-circle" style="font-size: 12px;" title="Completado"/>
-                                        </span>
-
-                                        <span attrs="{'invisible': [('estado_actual', '=', True)]}" style="color:Red;">
-                                            <i class="fa fa-circle-o" style="font-size: 12px;" title="En Progreso"/>
-                                        </span>
+                                        <div t-if="record.estado_actual.raw_value" style="color: green;">
+                                          <i class="fa fa-check-circle" style="font-size: 12px;" title="Completado"/>
+                                        </div>
+                                        <div t-else="" style="color: red;">
+                                          <i class="fa fa-circle-o" style="font-size: 12px;" title="En Progreso"/>
+                                        </div>
                                     </span>
                                 </div>
                             </div>
