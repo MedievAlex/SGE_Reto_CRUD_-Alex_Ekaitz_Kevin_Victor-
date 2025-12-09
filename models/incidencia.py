@@ -8,7 +8,7 @@ class Incidencia(models.Model):
     titulo = fields.Text(string="Titulo de la incidencia:")
     descripcion = fields.Text(string="Descripcion de la incidencia:")
     fecha_creacion = fields.Date(string="Fecha de creacion:", default=fields.Datetime.now)
-    estado_actual = fields.Boolean(string="Completa/Incompleta:", default=False)
+    estado_actual = fields.Boolean(string="Incompleta/Completa:", default=False)
 
     # [ CAMPOS RELACIONALES ]
     # [foreign key]
