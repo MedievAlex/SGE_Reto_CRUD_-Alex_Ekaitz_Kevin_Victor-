@@ -18,7 +18,7 @@
                            <field name="fecha_creacion"/>
                        </group>
                        <group col="2">
-                           <field name="estado_actual"/>
+                           <field name="estado_actual" widget="boolean_toggle"/>
                        </group>
                        <group colspan="4">
                            <field name="descripcion"/>
@@ -65,7 +65,7 @@
                                     </span>
                                     <span width="50%">
                                         <field name="estado_actual" attrs="{'invisible': True}"/>
-                                        
+
                                         <span attrs="{'invisible': [('estado_actual', '=', False)]}" style="color:Green;">
                                             <i class="fa fa-check-circle" style="font-size: 12px;" title="Completado"/>
                                         </span>
