@@ -10,7 +10,7 @@
                 <sheet>
                     <div name="titulo_incidencia">
                        <h1>
-                           <field name="titulo" placeholder="Ej.: Problema en la aplicación" required="1"/>
+                           <field name="name" placeholder="Ej.: Problema en la aplicación" required="1"/>
                        </h1>
                     </div>
                     <group name="informacion_incidencia" colspan="4">
@@ -24,6 +24,16 @@
                            <field name="descripcion"/>
                        </group>
                     </group>
+                    <notebook>
+                        <page string="Comentarios">
+                            <field name="id_comentario">
+                                <tree editable="top">
+                                    <field name="contenido"/>
+                                    <field name="fecha_creacion" readonly="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
@@ -35,7 +45,7 @@
         <field name="model">aplicacion_incidencias.incidencia</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="titulo"/>
+                <field name="name"/>
                 <field name="descripcion"/>
                 <field name="fecha_creacion"/>
                 <field name="estado_actual"/>
@@ -54,14 +64,14 @@
                         <div class="oe_kanban_global_click">
                             <div name="informacion_incidencia" class="oe_kanban_details" style="word-wrap: break-word;">
                                 <div>
-                                    <strong><field name="titulo"/></strong>
+                                    <strong><field name="name"/></strong>
                                 </div>
                                 <div>
                                     <field name="descripcion"/>
                                 </div>
                                 <div style="display: flex; justify-content: space-between;">
                                     <span width="50%">
-                                        Fech a: <field name="fecha_creacion"/>
+                                        Fecha: <field name="fecha_creacion"/>
                                     </span>
                                     <span width="50%">
                                         <field name="estado_actual" attrs="{'invisible': True}"/>

@@ -9,7 +9,12 @@
             <form>
                 <sheet>
                     <group name="informacion_comentario" colspan="4">
-                       <group colspan="4">
+                        <group colspan="4">
+                           <h1>
+                               <field name="name" placeholder="Ej.: Problema en la aplicación" required="1"/>
+                           </h1>
+                        </group>
+                        <group colspan="4">
                            <field name="contenido"/>
                        </group>
                         <group col="2">
@@ -30,6 +35,7 @@
         <field name="model">aplicacion_incidencias.comentario</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="name"/>
                 <field name="contenido"/>
                 <field name="fecha_creacion"/>
             </tree>
