@@ -18,7 +18,7 @@ class Encuesta(models.Model):
     state = fields.Selection([
         ('publico', 'Público'),
         ('privado', 'Privado')
-    ], string='Visibilidad', default='publico', tracking=True)
+    ], string='Estado', default='publico', tracking=True)
 
     # [ CAMPOS RELACIONALES ]
     # [foreign key]

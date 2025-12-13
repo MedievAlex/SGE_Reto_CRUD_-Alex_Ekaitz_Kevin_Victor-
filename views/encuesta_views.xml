@@ -6,16 +6,14 @@
             <field name="model">aplicacion_incidencias.encuesta</field>
             <field name="arch" type="xml">
                 <tree string="Encuestas de Satisfacción"
-                      decoration-danger="calificacion &lt; '2'"
-                      decoration-success="calificacion &gt;= '4'"
-                      decoration-warning="calificacion &gt;= '2' and calificacion &lt; '4'">
-                    <field name="calificacion" widget="priority" readonly="True" width="10%"/>
-                    <field name="state" widget="badge"
-                           options="{'classes': {'publico': 'bg-success', 'privado': 'bg-danger'}}"
-                           width="15%"/>
-                    <field name="comentario" width="28%"/>
-                    <field name="x_incidencia_id" width="25%"/>
-                    <field name="fecha_respuesta" widget="date" width="17%"/>
+                      decoration-danger="calificacion &lt; 2"
+                      decoration-success="calificacion &gt;= 4"
+                      decoration-warning="calificacion &gt;= 2 and calificacion &lt; 4">
+                    <field name="calificacion" widget="priority" readonly="True"/>
+                    <field name="state" widget="badge" string="Estado️"/>
+                    <field name="comentario" optional="hide"/>
+                    <field name="x_incidencia_id"/>
+                    <field name="fecha_respuesta" widget="date"/>
                 </tree>
             </field>
         </record>
@@ -28,7 +26,7 @@
                     <header>
                         <field name="state" widget="statusbar"
                                statusbar_visible="publico,privado"
-                               clickable="True"/>
+                               options="{'clickable': 1}"/>
                     </header>
 
                     <sheet>
