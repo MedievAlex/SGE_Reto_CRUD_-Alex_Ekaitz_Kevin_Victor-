@@ -6,13 +6,16 @@
             <field name="model">aplicacion_incidencias.encuesta</field>
             <field name="arch" type="xml">
                 <tree string="Encuestas de Satisfacción"
-                      decoration-danger="puntuacion &lt; '2'"
-                      decoration-success="puntuacion &gt;= '4'"
-                      decoration-warning="puntuacion &gt;= '2' and puntuacion &lt; '4'">
-                    <field name="puntuacion" widget="priority" readonly="True" width="15%"/>
-                    <field name="comentario" width="auto"/>
+                      decoration-danger="calificacion &lt; '2'"
+                      decoration-success="calificacion &gt;= '4'"
+                      decoration-warning="calificacion &gt;= '2' and calificacion &lt; '4'">
+                    <field name="calificacion" widget="priority" readonly="True" width="10%"/>
+                    <field name="state" widget="badge"
+                           options="{'classes': {'publico': 'bg-success', 'privado': 'bg-danger'}}"
+                           width="15%"/>
+                    <field name="comentario" width="28%"/>
                     <field name="x_incidencia_id" width="25%"/>
-                    <field name="fecha_respuesta" widget="date" width="10%"/>
+                    <field name="fecha_respuesta" widget="date" width="17%"/>
                 </tree>
             </field>
         </record>
@@ -22,25 +25,45 @@
             <field name="model">aplicacion_incidencias.encuesta</field>
             <field name="arch" type="xml">
                 <form string="Encuesta">
+                    <header>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="publico,privado"
+                               clickable="True"/>
+                    </header>
+
                     <sheet>
-                        <group>
-                            <group string="Calificación">
-                                <field name="puntuacion" widget="priority"/>
-                            </group>
+                        <notebook>
+                            <page string="Información Principal">
+                                <group>
+                                    <group string="Calificación">
+                                        <field name="calificacion" widget="priority"/>
+                                        <field name="state" widget="radio" options="{'horizontal': true}"/>
+                                    </group>
+                                    <group string="Información General">
+                                        <field name="fecha_respuesta" widget="date"/>
+                                        <field name="x_incidencia_id"/>
+                                    </group>
+                                </group>
+                            </page>
 
-                            <group string="Información General">
-                                <field name="fecha_respuesta" widget="date"/>
-                                <field name="x_incidencia_id"/>
-                            </group>
-                        </group>
+                            <page string="Comentarios Detallados">
+                                <separator string="Comentarios del Cliente"/>
 
-                        <separator string="Comentarios"/>
+                                <div style="width: 100%; padding: 16px;">
+                                    <field name="comentario" nolabel="1"
+                                           placeholder="Escribe aquí tus comentarios sobre la resolución de la incidencia..."
+                                           widget="textarea"
+                                           style="width: 100%; min-width: 100%;"/>
+                                </div>
 
-                        <group>
-                            <field name="comentario" nolabel="1"
-                                   placeholder="Escribe aquí..."
-                                   style="height: 100px; width: 400px;"/>
-                        </group>
+                                <div class="alert alert-info mt-4" role="alert" style="margin-top: 20px; padding: 0 16px;">
+                                    <small>
+                                        <i class="fa fa-info-circle mr-1"/>
+                                        Este comentario será visible para el equipo de soporte y servirá para mejorar nuestros servicios.
+                                    </small>
+                                </div>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
@@ -51,14 +74,35 @@
             <field name="model">aplicacion_incidencias.encuesta</field>
             <field name="arch" type="xml">
                 <kanban>
+                    <field name="state"/>
+                    <field name="calificacion"/>
+                    <field name="x_incidencia_id"/>
+                    <field name="comentario"/>
+                    <field name="fecha_respuesta"/>
+
                     <templates>
                         <t t-name="kanban-box">
-                            <div class="oe_kanban_global_click">
-                                <div class="o_kanban_record_body">
-                                    <field name="puntuacion" widget="priority" readonly="True"/>
-                                    <div><field name="comentario"/></div>
-                                    <div><strong><field name="x_incidencia_id"/></strong></div>
-                                    <div><small><field name="fecha_respuesta"/></small></div>
+                            <div class="oe_kanban_global_click" style="min-height: 240px; display: flex; flex-direction: column;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; font-size: 1.5em">
+                                    <field name="calificacion" widget="priority" readonly="True"/>
+                                    <field name="state" widget="badge"/>
+                                </div>
+
+                                <div style="flex: 1; display: flex; align-items: center; padding: 0 12px;">
+                                    <div style="width: 100%; max-height: 120px; overflow-y: auto; word-wrap: break-word;">
+                                        <field name="comentario"/>
+                                    </div>
+                                </div>
+
+                                <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: #f8f9fa; border-top: 1px solid #e9ecef;">
+                                    <div style="font-weight: bold;">
+                                        <field name="x_incidencia_id"/>
+                                    </div>
+                                    <div>
+                                        <small>
+                                            <field name="fecha_respuesta"/>
+                                        </small>
+                                    </div>
                                 </div>
                             </div>
                         </t>

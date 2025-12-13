@@ -5,7 +5,7 @@ class Encuesta(models.Model):
     _description = "Tabla de Ekaitz"
 
     # [ CAMPOS SIMPLES ]
-    puntuacion = fields.Selection([
+    calificacion = fields.Selection([
         ('0', '0'),
         ('1', '1'),
         ('2', '2'),
@@ -15,6 +15,10 @@ class Encuesta(models.Model):
     ], string="Puntuación", default='5')
     comentario = fields.Text(string="Comentario")
     fecha_respuesta = fields.Date(string="Fecha", default=fields.Datetime.now)
+    state = fields.Selection([
+        ('publico', 'Público'),
+        ('privado', 'Privado')
+    ], string='Visibilidad', default='publico', tracking=True)
 
     # [ CAMPOS RELACIONALES ]
     # [foreign key]
