@@ -6,64 +6,15 @@
             <field name="model">aplicacion_incidencias.encuesta</field>
             <field name="arch" type="xml">
                 <tree string="Encuestas de Satisfacción"
-                      decoration-danger="calificacion &lt; 2"
-                      decoration-success="calificacion &gt;= 4"
-                      decoration-warning="calificacion &gt;= 2 and calificacion &lt; 4">
+                      decoration-danger="calificacion in ['0','1']"
+                        decoration-warning="calificacion in ['2','3']"
+                        decoration-success="calificacion in ['4','5']">
                     <field name="calificacion" widget="priority" readonly="True"/>
                     <field name="state" widget="badge" string="Estado️"/>
                     <field name="comentario" optional="hide"/>
                     <field name="x_incidencia_id"/>
                     <field name="fecha_respuesta" widget="date"/>
                 </tree>
-            </field>
-        </record>
-
-        <record id="encuesta_view_form" model="ir.ui.view">
-            <field name="name">encuesta.form</field>
-            <field name="model">aplicacion_incidencias.encuesta</field>
-            <field name="arch" type="xml">
-                <form string="Encuesta">
-                    <header>
-                        <field name="state" widget="statusbar"
-                               statusbar_visible="publico,privado"
-                               options="{'clickable': 1}"/>
-                    </header>
-
-                    <sheet>
-                        <notebook>
-                            <page string="Información Principal">
-                                <group>
-                                    <group string="Calificación">
-                                        <field name="calificacion" widget="priority"/>
-                                        <field name="state" widget="radio" options="{'horizontal': true}"/>
-                                    </group>
-                                    <group string="Información General">
-                                        <field name="fecha_respuesta" widget="date"/>
-                                        <field name="x_incidencia_id"/>
-                                    </group>
-                                </group>
-                            </page>
-
-                            <page string="Comentarios Detallados">
-                                <separator string="Comentarios del Cliente"/>
-
-                                <div style="width: 100%; padding: 16px;">
-                                    <field name="comentario" nolabel="1"
-                                           placeholder="Escribe aquí tus comentarios sobre la resolución de la incidencia..."
-                                           widget="textarea"
-                                           style="width: 100%; min-width: 100%;"/>
-                                </div>
-
-                                <div class="alert alert-info mt-4" role="alert" style="margin-top: 20px; padding: 0 16px;">
-                                    <small>
-                                        <i class="fa fa-info-circle mr-1"/>
-                                        Este comentario será visible para el equipo de soporte y servirá para mejorar nuestros servicios.
-                                    </small>
-                                </div>
-                            </page>
-                        </notebook>
-                    </sheet>
-                </form>
             </field>
         </record>
 
@@ -106,6 +57,55 @@
                         </t>
                     </templates>
                 </kanban>
+            </field>
+        </record>
+
+        <record id="encuesta_view_form" model="ir.ui.view">
+            <field name="name">encuesta.form</field>
+            <field name="model">aplicacion_incidencias.encuesta</field>
+            <field name="arch" type="xml">
+                <form string="Encuesta">
+                    <header>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="publico,privado"
+                               options="{'clickable': 1}"/>
+                    </header>
+
+                    <sheet>
+                        <notebook>
+                            <page string="Información Principal">
+                                <group>
+                                    <group string="Calificación">
+                                        <field name="calificacion" widget="priority"/>
+                                        <field name="state" widget="radio" options="{'horizontal': true}"/>
+                                    </group>
+                                    <group string="Información General">
+                                        <field name="fecha_respuesta" widget="date"/>
+                                        <field name="x_incidencia_id"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                            <page string="Comentarios Detallados">
+                                <separator string="Comentarios"/>
+
+                                <div style="width: 100%; padding: 16px;">
+                                    <field name="comentario" nolabel="1"
+                                           placeholder="Escribe aquí tus comentarios sobre la resolución de la incidencia..."
+                                           widget="textarea"
+                                           style="width: 100%; min-width: 100%;"/>
+                                </div>
+
+                                <div class="alert alert-info mt-4" role="alert" style="margin-top: 20px; padding: 0 16px;">
+                                    <small>
+                                        <i class="fa fa-info-circle mr-1"/>
+                                        Este comentario será visible para el equipo de soporte y servirá para mejorar nuestros servicios.
+                                    </small>
+                                </div>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
             </field>
         </record>
     </data>
