@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+    <!-- SEARCH -->
+    <record id="view_incidencia_search" model="ir.ui.view">
+            <field name="name">incidencia.search</field>
+            <field name="model">aplicacion_incidencias.incidencia</field>
+            <field name="arch" type="xml">
+                <search string="Buscar Incidencias">
+                    <!-- Buscador -->
+                    <field name="name"/>
+                    <field name="descripcion"/>
+
+                    <!-- Filtros -->
+                    <filter name="filtro_incompleto" string="Incompletas"
+                            domain="[('estado_actual', '=', 'False')]"/>
+                    <filter name="filtro_completo" string="Completas"
+                            domain="[('estado_actual', '=', 'True')]"/>
+                    <field name="fecha_creacion" string="Fecha" widget="daterange"/>
+
+                    <!-- Agrupamientos -->
+                    <group expand="0" string="Agrupar por">
+                        <filter name="group_by_fecha" string="Fecha" context="{'group_by': 'fecha_creacion'}"/>
+                        <filter name="group_by_estado_actual" string="Estado" context="{'group_by': 'estado_actual'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
 
     <!-- FORM -->
     <record id="view_incidencias_form" model="ir.ui.view">
@@ -26,10 +51,11 @@
                     </group>
                     <notebook>
                         <page string="Comentarios">
-                            <field name="id_comentario">
+                            <field name="id_comentario" style="grid-auto-columns: auto;">
                                 <tree editable="top">
-                                    <field name="contenido"/>
-                                    <field name="fecha_creacion" readonly="1"/>
+                                    <field name="name" style="width: 20%;"/>
+                                    <field name="contenido" style="width: 60%;"/>
+                                    <field name="fecha_creacion" readonly="1" style="width: 20%;"/>
                                 </tree>
                             </field>
                         </page>
@@ -46,7 +72,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
-                <field name="descripcion"/>
+                <field name="descripcion_corta"/>
                 <field name="fecha_creacion"/>
                 <field name="estado_actual"/>
             </tree>
@@ -67,7 +93,7 @@
                                     <strong><field name="name"/></strong>
                                 </div>
                                 <div>
-                                    <field name="descripcion"/>
+                                    <field name="descripcion_corta"/>
                                 </div>
                                 <div style="display: flex; justify-content: space-between;">
                                     <span width="50%">
@@ -91,8 +117,6 @@
             </kanban>
         </field>
     </record>
-
-    <!-- SEARCH -->
 </odoo>
 
 <!--

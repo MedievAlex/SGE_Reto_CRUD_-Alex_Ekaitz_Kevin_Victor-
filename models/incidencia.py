@@ -1,4 +1,6 @@
-from odoo import fields, models
+from datetime import date
+
+from odoo import fields, models, api
 
 class Incidencia(models.Model):
     _name = "aplicacion_incidencias.incidencia"
@@ -7,6 +9,7 @@ class Incidencia(models.Model):
     # [ CAMPOS SIMPLES ]
     name = fields.Text(string="Titulo de la incidencia:")
     descripcion = fields.Text(string="Descripcion de la incidencia:")
+    descripcion_corta = fields.Text(string="Descripcion de la incidencia:", compute="acortar_descripcion")
     fecha_creacion = fields.Date(string="Fecha de creacion:", default=fields.Datetime.now)
     estado_actual = fields.Boolean(string="Incompleta/Completa:", default=False)
 
@@ -19,5 +22,20 @@ class Incidencia(models.Model):
                                     Sgtring="Comentario:",
                                     required=False,
                                     ondelete="cascade")
+    com_name = fields.Text(related="id_comentario.name")
     com_contenido = fields.Text(related="id_comentario.contenido")
     com_fecha_creacion = fields.Date(related="id_comentario.fecha_creacion")
+
+    @api.depends('descripcion')
+    def acortar_descripcion(self):
+        for inc in self:
+            if len(inc.descripcion) > 50:
+                self.descripcion_corta = inc.descripcion[0:50] + "...";
+            else:
+                self.descripcion_corta = inc.descripcion;
+
+    @api.onchange('fecha_creacion')
+    def validar_fecha_creacion(self):
+        fecha_hoy = date.today();
+        if self.fecha_creacion > fecha_hoy:
+            self.fecha_creacion = date.today();
