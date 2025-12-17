@@ -29,18 +29,18 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <div name="titulo_comentario" colspan="4">
+                       <h1>
+                           <field name="name" placeholder="Ej.: Problema en la aplicación" required="1"/>
+                       </h1>
+                    </div>
                     <group name="informacion_comentario" colspan="4">
-                        <group colspan="4">
-                           <h1>
-                               <field name="name" placeholder="Ej.: Problema en la aplicación" required="1"/>
-                           </h1>
-                        </group>
-                        <group colspan="4">
+                        <group>
                            <field name="contenido"/>
-                       </group>
-                        <group col="2">
+                        </group>
+                        <group>
                            <field name="id_incidencia"/>
-                       </group>
+                        </group>
                         <group col="2">
                            <field name="fecha_creacion"/>
                        </group>
@@ -72,32 +72,32 @@
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click">
-                            <div>
-                                <div>
+                            <div  name="informacion_comentario" class="oe_kanban_details" style="word-wrap: break-word;">
+                                <header>
                                     <strong><field name="name"/></strong>
-                                </div>
+                                </header>
                                 <div>
                                     <field name="contenido_corto"/>
                                 </div>
                                 <div>
                                     <field name="fecha_creacion"/>
                                 </div>
+                                <hr/>
+                                <footer style="display: flex; justify-content: space-between;">
+                                    <div>
+                                        <strong>Incidencia: </strong><field name="inc_name"/>
+                                    </div>
+                                    <span width="20%">
+                                        <field name="inc_estado_actual" attrs="{'invisible': True}"/>
+                                        <div t-if="record.inc_estado_actual.raw_value" style="color: green;">
+                                          <i class="fa fa-check-circle" style="font-size: 12px;" title="Completado"/>
+                                        </div>
+                                        <div t-else="" style="color: red;">
+                                          <i class="fa fa-circle-o" style="font-size: 12px;" title="En Progreso"/>
+                                        </div>
+                                    </span>
+                                </footer>
                             </div>
-                            <footer style="display: flex; justify-content: space-between;">
-                                <div>
-                                    <strong>Incidencia: </strong><field name="inc_name"/>
-                                </div>
-                                <span width="20%">
-                                    <field name="inc_estado_actual" attrs="{'invisible': True}"/>
-
-                                    <div t-if="record.inc_estado_actual.raw_value" style="color: green;">
-                                      <i class="fa fa-check-circle" style="font-size: 12px;" title="Completado"/>
-                                    </div>
-                                    <div t-else="" style="color: red;">
-                                      <i class="fa fa-circle-o" style="font-size: 12px;" title="En Progreso"/>
-                                    </div>
-                                </span>
-                            </footer>
                         </div>
                     </t>
                 </templates>
