@@ -51,6 +51,6 @@ class Encuesta(models.Model):
     def _depends_acortar_comentario(self):
         for enc in self:
             if len(enc.comentario) > 60:
-                self.comentario_corto = enc.comentario[0:60] + "..."
+                enc.comentario_corto = enc.comentario[0:60] + "..."
             else:
-                self.comentario_corto = enc.comentario
+                enc.comentario_corto = enc.comentario
