@@ -15,20 +15,20 @@
                     <separator/>
 
                     <filter name="filtro_publico" string="Públicas"
-                            domain="[('state', '=', 'publico')]"/>
+                            domain="[('estado', '=', 'publico')]"/>
                     <filter name="filtro_privado" string="Privadas"
-                            domain="[('state', '=', 'privado')]"/>
+                            domain="[('estado', '=', 'privado')]"/>
 
                     <field name="calificacion" string="Calificación"/>
-                    <field name="state" string="Estado"/>
+                    <field name="estado" string="Estado"/>
                     <field name="comentario" string="Buscar en comentarios"/>
-                    <field name="x_incidencia_id" string="Incidencia"/>
+                    <field name="inc_name" string="Incidencia"/>
 
                     <field name="fecha_respuesta" string="Fecha" widget="daterange"/>
 
                     <group expand="0" string="Agrupar por">
                         <filter name="group_by_estado" string="Estado"
-                                context="{'group_by': 'state'}"/>
+                                context="{'group_by': 'estado'}"/>
                         <filter name="group_by_calificacion" string="Calificación"
                                 context="{'group_by': 'calificacion'}"/>
                         <filter name="group_by_fecha" string="Fecha (mes)"
@@ -47,9 +47,9 @@
                         decoration-warning="calificacion in ['2','3']"
                         decoration-success="calificacion in ['4','5']">
                     <field name="calificacion" widget="priority" readonly="True"/>
-                    <field name="state" widget="badge" string="Estado️"/>
-                    <field name="comentario" optional="hide"/>
-                    <field name="x_incidencia_id"/>
+                    <field name="estado" widget="badge" string="Estado️"/>
+                    <field name="comentario_corto"/>
+                    <field name="inc_name"/>
                     <field name="fecha_respuesta" widget="date"/>
                 </tree>
             </field>
@@ -60,9 +60,9 @@
             <field name="model">aplicacion_incidencias.encuesta</field>
             <field name="arch" type="xml">
                 <kanban>
-                    <field name="state"/>
+                    <field name="estado"/>
                     <field name="calificacion"/>
-                    <field name="x_incidencia_id"/>
+                    <field name="inc_name"/>
                     <field name="comentario"/>
                     <field name="fecha_respuesta"/>
 
@@ -71,7 +71,7 @@
                             <div class="oe_kanban_global_click" style="min-height: 240px; display: flex; flex-direction: column;">
                                 <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; font-size: 1.5em">
                                     <field name="calificacion" widget="priority" readonly="True"/>
-                                    <field name="state" widget="badge"/>
+                                    <field name="estado" widget="badge"/>
                                 </div>
 
                                 <div style="flex: 1; display: flex; align-items: center; padding: 0 12px;">
@@ -82,7 +82,7 @@
 
                                 <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: #f8f9fa; border-top: 1px solid #e9ecef;">
                                     <div style="font-weight: bold;">
-                                        <field name="x_incidencia_id"/>
+                                        <field name="inc_name"/>
                                     </div>
                                     <div>
                                         <small>
@@ -103,7 +103,7 @@
             <field name="arch" type="xml">
                 <form string="Encuesta">
                     <header>
-                        <field name="state" widget="statusbar"
+                        <field name="estado" widget="statusbar"
                                statusbar_visible="publico,privado"
                                options="{'clickable': 1}"/>
                     </header>
@@ -114,7 +114,7 @@
                                 <group>
                                     <group string="Calificación">
                                         <field name="calificacion" widget="priority"/>
-                                        <field name="state" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="estado" widget="radio" options="{'horizontal': true}"/>
                                     </group>
                                     <group string="Información General">
                                         <field name="fecha_respuesta" widget="date"/>

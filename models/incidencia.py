@@ -5,7 +5,7 @@ class Incidencia(models.Model):
     _description = "Tabla de Alex"
 
     # [ CAMPOS SIMPLES ]
-    titulo = fields.Text(string="Titulo de la incidencia")
+    name = fields.Text(string="Titulo de la incidencia:")
     descripcion = fields.Text(string="Descripcion de la incidencia")
     fecha_creacion = fields.Date(string="Fecha de creacion")
     estado_actual = fields.Boolean(string="Estado (Completa/Incompleta)")
