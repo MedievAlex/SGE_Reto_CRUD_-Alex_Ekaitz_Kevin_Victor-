@@ -12,7 +12,7 @@
 
                     <!-- Filtros -->
                     <filter name="filtro_incompleto" string="Incompletas"
-                            domain="[('estado_actual', '=', 'False')]"/>
+                            domain="[('estado_actual', '!=', 'True')]"/>
                     <filter name="filtro_completo" string="Completas"
                             domain="[('estado_actual', '=', 'True')]"/>
                     <field name="fecha_creacion" string="Fecha" widget="daterange"/>
@@ -51,11 +51,21 @@
                     </group>
                     <notebook>
                         <page string="Comentarios">
-                            <field name="id_comentario" style="grid-auto-columns: auto;">
+                            <field name="id_comentario">
                                 <tree editable="top">
-                                    <field name="name" style="width: 20%;"/>
-                                    <field name="contenido" style="width: 60%;"/>
-                                    <field name="fecha_creacion" readonly="1" style="width: 20%;"/>
+                                    <field name="name"/>
+                                    <field name="contenido"/>
+                                    <field name="fecha_creacion" readonly="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Estadísticas">
+                            <field name="id_estadisticas">
+                                <tree>
+                                    <field name="fecha"/>
+                                    <field name="total_incidencias"/>
+                                    <field name="incidencias_finalizadas"/>
+                                    <field name="tiempo_promedio_resolucion"/>
                                 </tree>
                             </field>
                         </page>

@@ -15,6 +15,7 @@ class Comentario(models.Model):
     # [ CAMPOS RELACIONALES ]
     # [foreign key]
     id_incidencia = fields.Many2one(comodel_name="aplicacion_incidencias.incidencia", string="Incidencia", required=True, ondelete="cascade")
+
     inc_name = fields.Text(related="id_incidencia.name")
     inc_estado_actual = fields.Boolean(related="id_incidencia.estado_actual")
 
@@ -22,9 +23,9 @@ class Comentario(models.Model):
     def acortar_contenido(self):
         for com in self:
             if len(com.contenido) > 50:
-                self.contenido_corto = com.contenido[0:50] + "...";
+                com.contenido_corto = com.contenido[0:50] + "...";
             else:
-                self.contenido_corto = com.contenido;
+                com.contenido_corto = com.contenido;
 
     @api.onchange('fecha_creacion')
     def validar_fecha_creacion(self):

@@ -15,13 +15,11 @@ class Incidencia(models.Model):
 
     # [ CAMPOS RELACIONALES ]
     # [foreign key]
-    estadisticas_ids = fields.Many2many(comodel_name="aplicacion_incidencias.estadisticas", relation="estadisticas_incidencia",
+    id_estadisticas = fields.Many2many(comodel_name="aplicacion_incidencias.estadisticas", relation="estadisticas_incidencia",
                                         column1="incidencia_id", column2="estadisticas_id", string="Estadísticas Relacionadas")
-    id_comentario = fields.One2many(comodel_name="aplicacion_incidencias.comentario",
-                                    inverse_name="id_incidencia",
-                                    Sgtring="Comentario:",
-                                    required=False,
-                                    ondelete="cascade")
+    id_comentario = fields.One2many(comodel_name="aplicacion_incidencias.comentario", inverse_name="id_incidencia",
+                                    string="Comentario:", required=False, ondelete="cascade")
+
     com_name = fields.Text(related="id_comentario.name")
     com_contenido = fields.Text(related="id_comentario.contenido")
     com_fecha_creacion = fields.Date(related="id_comentario.fecha_creacion")
@@ -30,9 +28,9 @@ class Incidencia(models.Model):
     def acortar_descripcion(self):
         for inc in self:
             if len(inc.descripcion) > 50:
-                self.descripcion_corta = inc.descripcion[0:50] + "...";
+                inc.descripcion_corta = inc.descripcion[0:50] + "...";
             else:
-                self.descripcion_corta = inc.descripcion;
+                inc.descripcion_corta = inc.descripcion;
 
     @api.onchange('fecha_creacion')
     def validar_fecha_creacion(self):
