@@ -23,12 +23,12 @@ class Comentario(models.Model):
     def acortar_contenido(self):
         for com in self:
             if len(com.contenido) > 50:
-                com.contenido_corto = com.contenido[0:50] + "...";
+                com.contenido_corto = com.contenido[0:50] + "..."
             else:
-                com.contenido_corto = com.contenido;
+                com.contenido_corto = com.contenido
 
     @api.onchange('fecha_creacion')
     def validar_fecha_creacion(self):
-        fecha_hoy = date.today();
+        fecha_hoy = date.today()
         if self.fecha_creacion > fecha_hoy:
-            self.fecha_creacion = date.today();
+            self.fecha_creacion = date.today()
