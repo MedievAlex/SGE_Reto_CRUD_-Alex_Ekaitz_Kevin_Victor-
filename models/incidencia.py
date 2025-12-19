@@ -51,7 +51,7 @@ class Incidencia(models.Model):
     def create(self, vals):
         if 'name' in vals:
             vals['name'] = vals['name'].upper()
-            if vals['descripcion'] is " " or "":
+            if vals['descripcion'] is ' ' or not vals['descripcion']:
                 vals['descripcion'] = "Sin descripción."
             else:
                 vals['descripcion'] = vals['descripcion'].capitalize()
