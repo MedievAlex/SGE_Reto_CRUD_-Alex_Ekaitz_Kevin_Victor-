@@ -15,7 +15,7 @@
     <record id="action_encuesta" model="ir.actions.act_window">
         <field name="name">Encuesta</field>
         <field name="res_model">aplicacion_incidencias.encuesta</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,kanban</field>
     </record>
 
     <record id="action_comentario" model="ir.actions.act_window">
