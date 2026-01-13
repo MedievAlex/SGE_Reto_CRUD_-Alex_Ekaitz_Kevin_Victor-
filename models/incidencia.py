@@ -42,10 +42,6 @@ class Incidencia(models.Model):
         if self.fecha_creacion > fecha_hoy:
             self.fecha_creacion = date.today()
 
-    # RESTRICCIONES
-    @api.constrains('')
-
-
     # SOBRECARGA
     @api.model
     def create(self, vals):

@@ -19,6 +19,7 @@ class Comentario(models.Model):
     inc_name = fields.Text(related="id_incidencia.name")
     inc_estado_actual = fields.Boolean(related="id_incidencia.estado_actual")
 
+    # CAMPO CALCULADO
     @api.depends('contenido')
     def acortar_contenido(self):
         for com in self:
@@ -27,6 +28,7 @@ class Comentario(models.Model):
             else:
                 com.contenido_corto = com.contenido
 
+    # VALIDACIONES
     @api.onchange('fecha_creacion')
     def validar_fecha_creacion(self):
         fecha_hoy = date.today()
