@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- SEARCH -->
+    <record id="view_comentario_search" model="ir.ui.view">
+            <field name="name">comentario.search</field>
+            <field name="model">aplicacion_incidencias.comentario</field>
+            <field name="arch" type="xml">
+                <search string="Buscar Comentarios">
+                    <!-- Buscador -->
+                    <field name="name"/>
+                    <field name="contenido"/>
+
+                    <!-- Filtros -->
+                    <field name="fecha_creacion" string="Fecha" widget="daterange"/>
+
+                    <!-- Agrupamientos -->
+                    <group expand="0" string="Agrupar por">
+                        <filter name="group_by_incidencia" string="Incidencia" context="{'group_by': 'id_incidencia'}"/>
+                        <filter name="group_by_fecha" string="Fecha" context="{'group_by': 'fecha_creacion'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+     <!-- FORM -->
+    <record id="view_comentario_form" model="ir.ui.view">
+        <field name="name">comentario.tree</field>
+        <field name="model">aplicacion_incidencias.comentario</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div name="titulo_comentario" colspan="4">
+                       <h1>
+                           <field name="name" placeholder="Ej.: Problema en la aplicación" required="1"/>
+                       </h1>
+                    </div>
+                    <group name="informacion_comentario" colspan="4">
+                        <group>
+                           <field name="contenido"/>
+                        </group>
+                        <group>
+                           <field name="id_incidencia"/>
+                        </group>
+                        <group col="2">
+                           <field name="fecha_creacion"/>
+                       </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- TREE -->
+    <record id="view_comentario_tree" model="ir.ui.view">
+        <field name="name">comentario.tree</field>
+        <field name="model">aplicacion_incidencias.comentario</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="contenido_corto"/>
+                <field name="fecha_creacion"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- KANBAN -->
+    <record id="view_comentario_kanban" model="ir.ui.view">
+        <field name="name">comentario.tree</field>
+        <field name="model">aplicacion_incidencias.comentario</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div  name="informacion_comentario" class="oe_kanban_details" style="word-wrap: break-word;">
+                                <header>
+                                    <strong><field name="name"/></strong>
+                                </header>
+                                <div>
+                                    <field name="contenido_corto"/>
+                                </div>
+                                <div>
+                                    <field name="fecha_creacion"/>
+                                </div>
+                                <hr/>
+                                <footer style="display: flex; justify-content: space-between;">
+                                    <div>
+                                        <strong>Incidencia: </strong><field name="inc_name"/>
+                                    </div>
+                                    <span width="20%">
+                                        <field name="inc_estado_actual" attrs="{'invisible': True}"/>
+                                        <div t-if="record.inc_estado_actual.raw_value" style="color: green;">
+                                          <i class="fa fa-check-circle" style="font-size: 12px;" title="Completado"/>
+                                        </div>
+                                        <div t-else="" style="color: red;">
+                                          <i class="fa fa-circle-o" style="font-size: 12px;" title="En Progreso"/>
+                                        </div>
+                                    </span>
+                                </footer>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+</odoo>
