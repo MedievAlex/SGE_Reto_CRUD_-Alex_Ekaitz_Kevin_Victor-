@@ -36,6 +36,7 @@ class Encuesta(models.Model):
                     "La fecha no puede ser posterior a la de hoy."
                 )
 
+    # VALIDACIONES
     @api.onchange("fecha_respuesta")
     def _onchange_fecha_respuesta(self):
         if not self.fecha_respuesta and self._origin.fecha_respuesta:
@@ -58,6 +59,7 @@ class Encuesta(models.Model):
             else:
                 enc.comentario_corto = ""
 
+    # SOBRECARGA
     @api.model
     def create(self, vals):
         comentario = vals.get("comentario")

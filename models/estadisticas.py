@@ -13,4 +13,4 @@ class Estadisticas(models.Model):
     # [ CAMPOS RELACIONALES ]
     # [foreign key]
     incidencia_ids = fields.Many2many(comodel_name="aplicacion_incidencias.incidencia", relation="estadisticas_incidencia",
-                                        column1="estadisticas_id", column2="incidencia_id", string="Incidencias Relacionadas")
+                                        column1="estadisticas_id", column2="incidencia_id", string="Incidencias Relacionadas", required=True)
