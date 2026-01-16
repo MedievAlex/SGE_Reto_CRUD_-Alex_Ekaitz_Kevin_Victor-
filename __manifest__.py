@@ -3,11 +3,11 @@
 
 {
     'name': 'aplicacion_incidencias',
-    'version': '1.0',
+    'version': '1.4.2',
     'description': """
 Aplicación de incidencias del RETO 2 - CRUD Avanzado de grupo compuesto por Alex, Ekaitz, Kevin y Victor.
     """,
-    'depends': ['base'],
+    'depends': ['base', 'project'],
     'images': ['static/description/icon.png'],
     'data': [
         "security/aplicacion_incidencias_security.xml",
