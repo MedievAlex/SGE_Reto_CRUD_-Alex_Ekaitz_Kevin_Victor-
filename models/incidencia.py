@@ -27,7 +27,7 @@ class Incidencia(models.Model):
     com_fecha_creacion = fields.Date(related="id_comentario.fecha_creacion")
 
     # [ herencia ]
-    id_herencia = fields.Many2one(comodel_name="aplicacion_incidencias.projectTask_incidencia", string="Incidencia")
+    id_herencia = fields.Many2one(string="Tarea: ", comodel_name="project.task")
 
     # CAMPO CALCULADO
     @api.depends('descripcion')
