@@ -26,6 +26,9 @@ class Incidencia(models.Model):
     com_contenido = fields.Text(related="id_comentario.contenido")
     com_fecha_creacion = fields.Date(related="id_comentario.fecha_creacion")
 
+    # [ herencia ]
+    id_herencia = fields.Many2one(string="Tarea: ", comodel_name="project.task")
+
     # CAMPO CALCULADO
     @api.depends('descripcion')
     def acortar_descripcion(self):
