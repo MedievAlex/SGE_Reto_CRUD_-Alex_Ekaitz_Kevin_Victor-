@@ -10,7 +10,7 @@
                     <page string="Incidencias">
                         <field name="id_incidencia" widget="one2many_list" readonly="1">
                             <tree>
-                                <field name="name" width="50"/>
+                                <field name="name"/>
                                 <field name="descripcion"/>
                             </tree>
                         </field>
