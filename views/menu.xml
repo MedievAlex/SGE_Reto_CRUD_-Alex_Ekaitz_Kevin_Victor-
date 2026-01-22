@@ -15,13 +15,13 @@
     <record id="action_encuesta" model="ir.actions.act_window">
         <field name="name">Encuesta</field>
         <field name="res_model">aplicacion_incidencias.encuesta</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,kanban</field>
     </record>
 
     <record id="action_comentario" model="ir.actions.act_window">
         <field name="name">Comentarios</field>
         <field name="res_model">aplicacion_incidencias.comentario</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,kanban</field>
     </record>
 
     <record id="action_adjunto" model="ir.actions.act_window">
@@ -30,15 +30,22 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem id="menu_incidencia_root" name="Aplicacion_Incidencia" />
+    <menuitem id="menu_incidencia_root"
+              name="Aplicacion_Incidencia" />
 
     <menuitem id="menu_encuestas" name="Encuesta" parent="menu_incidencia_root" action="action_encuesta" />
 
     <menuitem id="menu_estadisticas" name="Estadisticas" parent="menu_incidencia_root" action="action_estadisticas" />
 
-    <menuitem id="menu_incidencia" name="Incidencia" parent="menu_incidencia_root" action="action_incidencia" />
+    <menuitem id="menu_incidencia"
+              name="Incidencia"
+              parent="menu_incidencia_root"
+              action="action_incidencia" />
 
-    <menuitem id="menu_comentario" name="Comentario" parent="menu_incidencia_root" action="action_comentario" />
+    <menuitem id="menu_comentario"
+              name="Comentario"
+              parent="menu_incidencia_root"
+              action="action_comentario" />
 
     <menuitem id="menu_adjunto" name="Adjunto" parent="menu_incidencia_root" action="action_adjunto" />
 </odoo>

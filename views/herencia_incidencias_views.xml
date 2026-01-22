@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- SEARCH -->
+    <record id="view_incidencia_heredada" model="ir.ui.view">
+            <field name="name">Incidencia</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Incidencias">
+                        <field name="id_incidencia" widget="one2many_list">
+                            <tree>
+                                <field name="name"/>
+                                <field name="descripcion"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+</odoo>
