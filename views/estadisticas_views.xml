@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- SEARCH -->
+    <record id="view_estadisticas_search" model="ir.ui.view">
+        <field name="name">estadisticas.search</field>
+        <field name="model">aplicacion_incidencias.estadisticas</field>
+        <field name="arch" type="xml">
+            <search string="Buscar Estadísticas">
+                <!-- Buscador -->
+                <field name="fecha"/>
+                <field name="total_incidencias"/>
+                <field name="incidencias_finalizadas"/>
+                <!-- Filtros -->
+                <filter name="filtro_con_finalizadas"
+                        string="Con incidencias finalizadas"
+                        domain="[('incidencias_finalizadas', '>', 0)]"/>
+                <filter name="filtro_sin_finalizadas"
+                        string="Sin incidencias finalizadas"
+                        domain="[('incidencias_finalizadas', '=', 0)]"/>
+                <!-- Agrupaciones -->
+                <group expand="0" string="Agrupar por">
+                    <filter name="group_by_fecha"
+                            string="Fecha"
+                            context="{'group_by': 'fecha'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- TREE -->
+    <record id="view_estadisticas_tree" model="ir.ui.view">
+        <field name="name">estadisticas.tree</field>
+        <field name="model">aplicacion_incidencias.estadisticas</field>
+        <field name="arch" type="xml">
+            <tree string="Estadísticas">
+                <field name="fecha"/>
+                <field name="total_incidencias"/>
+                <field name="incidencias_finalizadas"/>
+                <field name="tiempo_promedio_resolucion"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ===================== -->
+    <!-- FORM VIEW -->
+    <!-- ===================== -->
+    <record id="view_estadisticas_form" model="ir.ui.view">
+        <field name="name">estadisticas.form</field>
+        <field name="model">aplicacion_incidencias.estadisticas</field>
+        <field name="arch" type="xml">
+            <form string="Estadística">
+                <sheet>
+
+                    <!-- Título -->
+                    <div colspan="4">
+                        <h1>
+                            <field name="fecha" placeholder="Fecha de la estadística"/>
+                        </h1>
+                    </div>
+
+                    <!-- Datos principales -->
+                    <group name="datos_estadistica" colspan="4">
+                        <group col="2">
+                            <field name="total_incidencias"/>
+                            <field name="incidencias_finalizadas"/>
+                        </group>
+                        <group col="2">
+                            <field name="tiempo_promedio_resolucion"/>
+                        </group>
+                    </group>
+
+                    <!-- Relación con incidencias -->
+                    <notebook>
+                        <page string="Incidencias Relacionadas">
+                            <field name="incidencia_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="fecha_creacion"/>
+                                    <field name="estado_actual"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ===================== -->
+    <!-- KANBAN VIEW -->
+    <!-- ===================== -->
+    <record id="view_estadisticas_kanban" model="ir.ui.view">
+        <field name="name">estadisticas.kanban</field>
+        <field name="model">aplicacion_incidencias.estadisticas</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+
+                                <header>
+                                    <strong>
+                                        <field name="fecha"/>
+                                    </strong>
+                                </header>
+
+                                <div>
+                                    Total incidencias:
+                                    <field name="total_incidencias"/>
+                                </div>
+
+                                <div>
+                                    Finalizadas:
+                                    <field name="incidencias_finalizadas"/>
+                                </div>
+
+                                <div>
+                                    Promedio resolución:
+                                    <field name="tiempo_promedio_resolucion"/>
+                                </div>
+
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+</odoo>
