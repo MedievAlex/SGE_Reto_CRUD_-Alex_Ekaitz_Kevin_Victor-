@@ -28,6 +28,10 @@ class Encuesta(models.Model):
     x_incidencia_id = fields.Many2one(comodel_name="aplicacion_incidencias.incidencia", string="Incidencia", required=True, ondelete="cascade")
     inc_name = fields.Text(related="x_incidencia_id.name")
 
+     # [ herencia ]
+    id_herencia = fields.Many2one(string="Tarea: ", comodel_name="project.task")
+
+    # VALIDACIONES
     @api.constrains("fecha_respuesta")
     def _check_fecha_respuesta_no_futura(self):
         for record in self:
@@ -36,7 +40,6 @@ class Encuesta(models.Model):
                     "La fecha no puede ser posterior a la de hoy."
                 )
 
-    # VALIDACIONES
     @api.onchange("fecha_respuesta")
     def _onchange_fecha_respuesta(self):
         if not self.fecha_respuesta and self._origin.fecha_respuesta:
