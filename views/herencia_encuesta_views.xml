@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_encuesta_heredada" model="ir.ui.view">
+        <field name="name">Encuesta</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Encuestas">
+                    <field name="id_encuesta" widget="one2many_list">
+                        <tree string="Encuestas Relacionadas">
+                            <field name="calificacion" widget="priority" readonly="True"/>
+                            <field name="comentario_corto"/>
+                        </tree>
+                    </field>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>
