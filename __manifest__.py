@@ -16,8 +16,10 @@ Aplicación de incidencias del RETO 2 - CRUD Avanzado de grupo compuesto por Ale
         "views/incidencias_views.xml",
         "views/comentarios_views.xml",
         "views/encuesta_views.xml",
+        "views/estadisticas_views.xml",
         "views/herencia_incidencias_views.xml",
-        "views/herencia_encuesta_views.xml"
+        "views/herencia_encuesta_views.xml",
+        "views/herencia_estadisticas_views.xml"
     ],
     'license': 'LGPL-3',
 }

@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <!-- SEARCH -->
-    <record id="view_incidencia_heredada" model="ir.ui.view">
-        <field name="name">Incidencia</field>
+    <record id="view_estadisticas_heredada" model="ir.ui.view">
+        <field name="name">Estadistica</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2"/>
         <field name="arch" type="xml">
             <notebook position="inside">
-                <page string="Incidencias">
-                    <field name="id_incidencia" widget="one2many_list">
+                <page string="Estadisticas">
+                    <field name="id_estadisticas">
                         <tree>
-                            <field name="name"/>
-                            <field name="descripcion"/>
+                            <field name="fecha"/>
+                            <field name="total_incidencias"/>
+                            <field name="incidencias_finalizadas"/>
                         </tree>
                     </field>
                 </page>

@@ -69,7 +69,7 @@
                                 </tree>
                             </field>
                         </page>
-                        <page string="Herencia">
+                        <page string="Proyecto">
                             <form>
                                 <b>Tarea : </b>
                                 <field name="id_herencia"/>
