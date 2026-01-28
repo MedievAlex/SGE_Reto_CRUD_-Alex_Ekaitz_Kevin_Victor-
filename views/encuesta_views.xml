@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="encuesta_view_search" model="ir.ui.view">
+            <field name="name">encuesta.search</field>
+            <field name="model">aplicacion_incidencias.encuesta</field>
+            <field name="arch" type="xml">
+                <search string="Buscar Encuestas">
+                    <filter name="filtro_muy_satisfecho" string="Muy Satisfecho (4-5)"
+                            domain="[('calificacion', 'in', ['4', '5'])]"/>
+                    <filter name="filtro_neutro" string="Neutral (2-3)"
+                            domain="[('calificacion', 'in', ['2', '3'])]"/>
+                    <filter name="filtro_insatisfecho" string="Insatisfecho (0-1)"
+                            domain="[('calificacion', 'in', ['0', '1'])]"/>
+                    <separator/>
+
+                    <filter name="filtro_publico" string="Públicas"
+                            domain="[('estado', '=', 'publico')]"/>
+                    <filter name="filtro_privado" string="Privadas"
+                            domain="[('estado', '=', 'privado')]"/>
+
+                    <field name="calificacion" string="Calificación"/>
+                    <field name="estado" string="Estado"/>
+                    <field name="comentario" string="Buscar en comentarios"/>
+                    <field name="inc_name" string="Incidencia"/>
+
+                    <field name="fecha_respuesta" string="Fecha" widget="daterange"/>
+
+                    <group expand="0" string="Agrupar por">
+                        <filter name="group_by_estado" string="Estado"
+                                context="{'group_by': 'estado'}"/>
+                        <filter name="group_by_calificacion" string="Calificación"
+                                context="{'group_by': 'calificacion'}"/>
+                        <filter name="group_by_fecha" string="Fecha (mes)"
+                                context="{'group_by': 'fecha_respuesta:month'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="encuesta_view_tree" model="ir.ui.view">
+            <field name="name">encuesta.tree</field>
+            <field name="model">aplicacion_incidencias.encuesta</field>
+            <field name="arch" type="xml">
+                <tree string="Encuestas de Satisfacción"
+                      decoration-danger="calificacion in ['0','1']"
+                        decoration-warning="calificacion in ['2','3']"
+                        decoration-success="calificacion in ['4','5']">
+                    <field name="calificacion" widget="priority" readonly="True"/>
+                    <field name="estado" widget="badge" string="Estado️"/>
+                    <field name="comentario_corto"/>
+                    <field name="inc_name"/>
+                    <field name="fecha_respuesta" widget="date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="encuesta_view_kanban" model="ir.ui.view">
+            <field name="name">encuesta.kanban</field>
+            <field name="model">aplicacion_incidencias.encuesta</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="estado"/>
+                    <field name="calificacion"/>
+                    <field name="inc_name"/>
+                    <field name="comentario"/>
+                    <field name="fecha_respuesta"/>
+
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click" style="min-height: 240px; display: flex; flex-direction: column;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; font-size: 1.5em">
+                                    <field name="calificacion" widget="priority" readonly="True"/>
+                                    <field name="estado" widget="badge"/>
+                                </div>
+
+                                <div style="flex: 1; display: flex; align-items: center; padding: 0 12px;">
+                                    <div style="width: 100%; max-height: 120px; overflow-y: auto; word-wrap: break-word;">
+                                        <field name="comentario"/>
+                                    </div>
+                                </div>
+
+                                <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: #f8f9fa; border-top: 1px solid #e9ecef;">
+                                    <div style="font-weight: bold;">
+                                        <field name="inc_name"/>
+                                    </div>
+                                    <div>
+                                        <small>
+                                            <field name="fecha_respuesta"/>
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="encuesta_view_form" model="ir.ui.view">
+            <field name="name">encuesta.form</field>
+            <field name="model">aplicacion_incidencias.encuesta</field>
+            <field name="arch" type="xml">
+                <form string="Encuesta">
+                    <header>
+                        <field name="estado" widget="statusbar"
+                               statusbar_visible="publico,privado"
+                               options="{'clickable': 1}"/>
+                    </header>
+
+                    <sheet>
+                        <notebook>
+                            <page string="Información Principal">
+                                <group>
+                                    <group string="Calificación">
+                                        <field name="calificacion" widget="priority"/>
+                                        <field name="estado" widget="radio" options="{'horizontal': true}"/>
+                                    </group>
+                                    <group string="Información General">
+                                        <field name="fecha_respuesta" widget="date"/>
+                                        <field name="x_incidencia_id"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                            <page string="Comentarios Detallados">
+                                <separator string="Comentarios"/>
+
+                                <div style="width: 100%; padding: 16px;">
+                                    <field name="comentario" nolabel="1"
+                                           placeholder="Escribe aquí tus comentarios sobre la resolución de la incidencia..."
+                                           widget="textarea"
+                                           style="width: 100%; min-width: 100%;"/>
+                                </div>
+
+                                <div class="alert alert-info mt-4" role="alert" style="margin-top: 20px; padding: 0 16px;">
+                                    <small>
+                                        <i class="fa fa-info-circle mr-1"/>
+                                        Este comentario será visible para el equipo de soporte y servirá para mejorar nuestros servicios.
+                                    </small>
+                                </div>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

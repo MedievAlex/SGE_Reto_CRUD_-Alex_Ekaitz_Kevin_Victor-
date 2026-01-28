@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- SEARCH -->
+    <record id="view_incidencia_search" model="ir.ui.view">
+            <field name="name">incidencia.search</field>
+            <field name="model">aplicacion_incidencias.incidencia</field>
+            <field name="arch" type="xml">
+                <search string="Buscar Incidencias">
+                    <!-- Buscador -->
+                    <field name="name"/>
+                    <field name="descripcion"/>
+
+                    <!-- Filtros -->
+                    <filter name="filtro_incompleto" string="Incompletas"
+                            domain="[('estado_actual', '!=', 'True')]"/>
+                    <filter name="filtro_completo" string="Completas"
+                            domain="[('estado_actual', '=', 'True')]"/>
+                    <field name="fecha_creacion" string="Fecha" widget="daterange"/>
+
+                    <!-- Agrupamientos -->
+                    <group expand="0" string="Agrupar por">
+                        <filter name="group_by_fecha" string="Fecha" context="{'group_by': 'fecha_creacion'}"/>
+                        <filter name="group_by_estado_actual" string="Estado" context="{'group_by': 'estado_actual'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+    <!-- FORM -->
+    <record id="view_incidencias_form" model="ir.ui.view">
+        <field name="name">incidencia.form</field>
+        <field name="model">aplicacion_incidencias.incidencia</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div name="titulo_incidencia" colspan="4">
+                       <h1>
+                           <field name="name" placeholder="Ej.: Problema en la aplicación" required="1"/>
+                       </h1>
+                    </div>
+                    <group name="informacion_incidencia" colspan="4">
+                       <group col="2">
+                           <field name="fecha_creacion"/>
+                       </group>
+                       <group col="2">
+                           <field name="estado_actual" widget="boolean_toggle"/>
+                       </group>
+                       <group colspan="4">
+                           <field name="descripcion"/>
+                       </group>
+                    </group>
+                    <notebook>
+                        <page string="Comentarios">
+                            <field name="id_comentario" style="display: flex; justify-content: space-between;">
+                                <tree editable="top">
+                                    <field name="name"/>
+                                    <field name="contenido"/>
+                                    <field name="fecha_creacion" readonly="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Estadísticas">
+                            <field name="id_estadisticas">
+                                <tree>
+                                    <field name="fecha"/>
+                                    <field name="total_incidencias"/>
+                                    <field name="incidencias_finalizadas"/>
+                                    <field name="tiempo_promedio_resolucion"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Herencia">
+                            <form>
+                                <b>Tarea : </b>
+                                <field name="id_herencia"/>
+                            </form>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- TREE -->
+    <record id="view_incidencias_tree" model="ir.ui.view">
+        <field name="name">incidencia.tree</field>
+        <field name="model">aplicacion_incidencias.incidencia</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="descripcion_corta"/>
+                <field name="fecha_creacion"/>
+                <field name="estado_actual"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- KANBAN -->
+    <record id="view_incidencias_kanban" model="ir.ui.view">
+        <field name="name">incidencia.kanban</field>
+        <field name="model">aplicacion_incidencias.incidencia</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div name="informacion_incidencia" class="oe_kanban_details" style="word-wrap: break-word;">
+                                <header>
+                                    <strong><field name="name"/></strong>
+                                </header>
+                                <div>
+                                    <field name="descripcion_corta"/>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span width="50%">
+                                        Fecha: <field name="fecha_creacion"/>
+                                    </span>
+                                    <span width="50%">
+                                        <field name="estado_actual" attrs="{'invisible': True}"/>
+
+                                        <div t-if="record.estado_actual.raw_value" style="color: green;">
+                                          <i class="fa fa-check-circle" style="font-size: 12px;" title="Completado"/>
+                                        </div>
+                                        <div t-else="" style="color: red;">
+                                          <i class="fa fa-circle-o" style="font-size: 12px;" title="En Progreso"/>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+</odoo>
