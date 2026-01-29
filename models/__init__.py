@@ -2,8 +2,9 @@ from . import incidencia
 from . import comentario
 from . import encuesta
 from . import estadisticas
-from . import adjunto
 from . import encuesta_herencia
+from . import adjunto
 from . import projectTask_incidencia
 from . import projectTask_encuesta
 from . import projectTask_estadisticas
+from . import projectTask_adjunto

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- ========== VISTA BÚSQUEDA ========== -->
+    <record id="view_adjunto_search" model="ir.ui.view">
+        <field name="name">adjunto.search</field>
+        <field name="model">aplicacion_incidencias.adjunto</field>
+        <field name="arch" type="xml">
+            <search string="Buscar Adjuntos">
+                <!-- Buscador -->
+                <field name="nombre_archivo"/>
+                <field name="ruta_archivo"/>
+                <field name="id_comentario"/>
+
+                <!-- Filtros -->
+                <filter name="filtro_hoy" string="Subidos hoy"
+                    domain="[('fecha_subida', '>=', context_today().strftime('%Y-%m-%d'))]"/>
+                <filter name="filtro_sin_ruta" string="Sin ruta"
+                    domain="[('ruta_archivo', '=', False)]"/>
+                <field name="fecha_subida" string="Fecha Subida" widget="daterange"/>
+
+                <!-- Agrupamientos -->
+                <group expand="0" string="Agrupar por">
+                    <filter name="group_by_fecha" string="Fecha Subida"
+                        context="{'group_by': 'fecha_subida'}"/>
+                    <filter name="group_by_comentario" string="Comentario"
+                        context="{'group_by': 'id_comentario'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- ========== VISTA FORM ========== -->
+    <record id="view_adjunto_form" model="ir.ui.view">
+        <field name="name">adjunto.form</field>
+        <field name="model">aplicacion_incidencias.adjunto</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div name="titulo_adjunto" colspan="4">
+                       <h1>
+                           <field name="nombre_archivo" placeholder="Ej.: screenshot_error.png" required="1"/>
+                       </h1>
+                    </div>
+                    <group name="informacion_adjunto" colspan="4">
+                       <group col="2">
+                           <field name="fecha_subida" readonly="1"/>
+                       </group>
+                       <group col="2">
+                           <field name="id_comentario" string="Comentario Relacionado"
+                                  widget="many2one" options="{'no_create': True}"/>
+                       </group>
+                       <group colspan="4">
+                           <field name="ruta_archivo" placeholder="Ej.: /home/user/documentos/archivo.pdf"/>
+                       </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ========== VISTA TREE ========== -->
+    <record id="view_adjunto_tree" model="ir.ui.view">
+        <field name="name">adjunto.tree</field>
+        <field name="model">aplicacion_incidencias.adjunto</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="nombre_archivo" string="Archivo"/>
+                <field name="id_comentario" string="Comentario"/>
+                <field name="fecha_subida" string="Fecha Subida"/>
+                <field name="ruta_archivo" string="Ruta" widget="url"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ========== VISTA KANBAN ========== -->
+    <record id="view_adjunto_kanban" model="ir.ui.view">
+        <field name="name">adjunto.kanban</field>
+        <field name="model">aplicacion_incidencias.adjunto</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="nombre_archivo"/>
+                <field name="id_comentario"/>
+                <field name="fecha_subida"/>
+                <field name="ruta_archivo"/>
+
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div name="informacion_adjunto" class="oe_kanban_details" style="word-wrap: break-word;">
+                                <header>
+                                    <strong>
+                                        <!-- Icono de archivo similar al de incidencias -->
+                                        <i class="fa fa-paperclip" style="margin-right: 5px;"/>
+                                        <field name="nombre_archivo"/>
+                                    </strong>
+                                </header>
+                                <div style="margin: 5px 0;">
+                                    <small>
+                                        <!-- Icono para comentario -->
+                                        <i class="fa fa-comment" style="margin-right: 3px;"/>
+                                        <field name="id_comentario" widget="many2one"/>
+                                    </small>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; font-size: 12px;">
+                                    <span style="width: 50%;">
+                                        <!-- Icono de calendario -->
+                                        <i class="fa fa-calendar" style="margin-right: 3px;"/>
+                                        <field name="fecha_subida"/>
+                                    </span>
+                                    <span style="width: 50%; text-align: right;">
+                                        <!-- Estado del archivo con iconos similares a incidencias -->
+                                        <div t-if="record.ruta_archivo.raw_value" style="color: green;">
+                                            <!-- Check cuando hay archivo -->
+                                            <i class="fa fa-check-circle" style="font-size: 12px;"
+                                               title="Archivo disponible"/>
+                                        </div>
+                                        <div t-else="" style="color: red;">
+                                            <!-- Círculo vacío cuando no hay ruta -->
+                                            <i class="fa fa-circle-o" style="font-size: 12px;"
+                                               title="Sin ruta definida"/>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+</odoo>

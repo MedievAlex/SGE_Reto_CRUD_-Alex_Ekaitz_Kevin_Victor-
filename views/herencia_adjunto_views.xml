@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- SEARCH -->
+    <record id="view_adjunto_heredada" model="ir.ui.view">
+            <field name="name">Adjunto</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Adjunto">
+                        <field name="id_adjunto" widget="one2many_list">
+                            <tree>
+                                <field name="nombre_archivo"/>
+                                <field name="ruta_archivo"/>
+                                <field name="fecha_subida"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+</odoo>
