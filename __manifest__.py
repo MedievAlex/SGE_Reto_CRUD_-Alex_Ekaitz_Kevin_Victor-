@@ -8,7 +8,8 @@
 Aplicación de incidencias del RETO 2 - CRUD Avanzado de grupo compuesto por Alex, Ekaitz, Kevin y Victor.
     """,
     'depends': [
-        'base'
+        'base',
+        'project'
     ],
     'data': [
         "security/aplicacion_incidencias_security.xml",
@@ -16,7 +17,9 @@ Aplicación de incidencias del RETO 2 - CRUD Avanzado de grupo compuesto por Ale
         "views/menu.xml",
         "views/incidencias_views.xml",
         "views/comentarios_views.xml",
-        "views/encuesta_views.xml"
+        "views/encuesta_views.xml",
+        "views/adjunto_views.xml",
+        "views/herencia_adjunto_views.xml"
     ],
     'license': 'LGPL-3',
 }
