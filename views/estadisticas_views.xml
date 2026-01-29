@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- SEARCH -->
+    <record id="view_estadisticas_search" model="ir.ui.view">
+        <field name="name">estadisticas.search</field>
+        <field name="model">aplicacion_incidencias.estadisticas</field>
+        <field name="arch" type="xml">
+            <search string="Buscar estadísticas">
+
+                <!-- Búsqueda principal -->
+                <field name="fecha"/>
+
+                <!-- FILTROS ÚTILES -->
+                <separator/>
+
+                <filter name="pocas"
+                        string="menos de 10 incidencias"
+                        domain="[('total_incidencias', '&lt;', '10')]"/>
+
+                <filter name="sin_incidencias"
+                        string="Sin incidencias"
+                        domain="[('total_incidencias', '=', 0)]"/>
+
+                <group expand="0" string="Agrupar por">
+                    <filter name="group_by_fecha"
+                            string="Fecha"
+                            context="{'group_by': 'fecha'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- TREE -->
+    <record id="view_estadisticas_tree" model="ir.ui.view">
+        <field name="name">estadisticas.tree</field>
+        <field name="model">aplicacion_incidencias.estadisticas</field>
+        <field name="arch" type="xml">
+            <tree
+                decoration-success="incidencias_finalizadas == total_incidencias"
+                decoration-warning="incidencias_finalizadas &lt; total_incidencias"
+                decoration-danger="incidencias_finalizadas &gt; total_incidencias">
+
+                <field name="fecha"/>
+                <field name="total_incidencias"/>
+                <field name="incidencias_finalizadas"/>
+                <field name="tiempo_promedio_resolucion"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ===================== -->
+    <!-- FORM VIEW -->
+    <!-- ===================== -->
+    <record id="view_estadisticas_form" model="ir.ui.view">
+        <field name="name">estadisticas.form</field>
+        <field name="model">aplicacion_incidencias.estadisticas</field>
+        <field name="arch" type="xml">
+            <form string="Estadísticas Diarias">
+                <sheet>
+                    <group string="Información diaria">
+                        <group>
+                            <field name="fecha"/>
+                            <field name="total_incidencias"/>
+                        </group>
+                        <group>
+                            <field name="incidencias_finalizadas"/>
+                            <field name="tiempo_promedio_resolucion"/>
+                            <field name="id_herencia"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
+    <!-- ===================== -->
+    <!-- KANBAN VIEW -->
+    <!-- ===================== -->
+    <record id="view_estadisticas_kanban" model="ir.ui.view">
+        <field name="name">estadisticas.kanban</field>
+        <field name="model">aplicacion_incidencias.estadisticas</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+
+                                <header class="d-flex justify-content-between align-items-center">
+                                    <strong>
+                                        <field name="fecha"/>
+                                    </strong>
+
+                                    <t t-if="record.incidencias_finalizadas.raw_value == record.total_incidencias.raw_value">
+                                        <i class="fa fa-check-circle text-success"
+                                           title="Todas las incidencias resueltas"/>
+                                    </t>
+                                    <t t-else="">
+                                        <i class="fa fa-exclamation-triangle text-warning"
+                                           title="Incidencias pendientes"/>
+                                    </t>
+                                </header>
+
+                                <div>
+                                    Total incidencias:
+                                    <field name="total_incidencias"/>
+                                </div>
+
+                                <div>
+                                    Finalizadas:
+                                    <field name="incidencias_finalizadas"/>
+                                </div>
+
+                                <div>
+                                    Promedio resolución:
+                                    <field name="tiempo_promedio_resolucion"/>
+                                </div>
+
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+</odoo>

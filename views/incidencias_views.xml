@@ -69,6 +69,12 @@
                                 </tree>
                             </field>
                         </page>
+                        <page string="Proyecto">
+                            <form>
+                                <b>Tarea : </b>
+                                <field name="id_herencia"/>
+                            </form>
+                        </page>
                     </notebook>
                 </sheet>
             </form>
