@@ -23,10 +23,16 @@ class Comentario(models.Model):
     @api.depends('contenido')
     def acortar_contenido(self):
         for com in self:
-            if len(com.contenido) > 50:
-                com.contenido_corto = com.contenido[0:50] + "..."
+            # Manejar casos donde contenido podría ser False, None o no-string
+            contenido = com.contenido or ""
+
+            if not isinstance(contenido, str):
+                contenido = str(contenido)
+
+            if len(contenido) > 50:
+                com.contenido_corto = contenido[0:50] + "..."
             else:
-                com.contenido_corto = com.contenido
+                com.contenido_corto = contenido
 
     # VALIDACIONES
     @api.onchange('fecha_creacion')

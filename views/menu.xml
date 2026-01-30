@@ -27,7 +27,7 @@
     <record id="action_adjunto" model="ir.actions.act_window">
         <field name="name">Adjuntos</field>
         <field name="res_model">aplicacion_incidencias.adjunto</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,kanban</field>
     </record>
 
     <menuitem id="menu_incidencia_root"
